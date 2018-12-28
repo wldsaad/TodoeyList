@@ -82,11 +82,27 @@ extension ItemsVC: UITableViewDataSource {
             if let todoName = items[indexPath.row].name {
                 cell.updateTodoNames(withName: todoName)
             }
+            cell.accessoryType = items[indexPath.row].checked ? .checkmark : .none
             return cell
         }
         
         return ItemCell()
     }
-    
-    
 }
+
+//MARK: - Extension for TableView Delegate
+extension ItemsVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        items[indexPath.row].checked = !items[indexPath.row].checked
+        saveData()
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            dataContext.delete(items[indexPath.row])
+            items.remove(at: indexPath.row)
+            saveData()
+        }
+    }
+}
+
