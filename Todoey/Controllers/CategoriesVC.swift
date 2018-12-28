@@ -35,7 +35,6 @@ class CategoriesVC: UIViewController {
                 newCategory.name = name
                 self.categories.append(newCategory)
                 self.saveData()
-                self.tableView.reloadData()
             }
         }
         addAlert.addAction(addAction)
@@ -50,6 +49,7 @@ extension CategoriesVC {
     private func saveData(){
         do {
             try dataContext.save()
+            tableView.reloadData()
         } catch {
             debugPrint("Errod saving: \(error)")
         }
@@ -60,6 +60,7 @@ extension CategoriesVC {
         let fetchReqest: NSFetchRequest<Category> = Category.fetchRequest()
         do {
             self.categories = try dataContext.fetch(fetchReqest)
+            tableView.reloadData()
         } catch {
             debugPrint("Error loading: \(error)")
         }
@@ -82,5 +83,26 @@ extension CategoriesVC: UITableViewDataSource {
         }
         
         return CategoryCell()
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            dataContext.delete(categories[indexPath.row])
+            categories.remove(at: indexPath.row)
+            saveData()
+        }
+    }
+}
+
+//MARK: - Extension for TableView Delegate
+extension CategoriesVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let categorySelected = categories[indexPath.row]
+        performSegue(withIdentifier: "showItemsSegue", sender: categorySelected)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let itemsVC = segue.destination as? ItemsVC {
+            
+        }
     }
 }

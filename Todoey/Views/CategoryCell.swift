@@ -17,6 +17,7 @@ class CategoryCell: UITableViewCell {
         super.awakeFromNib()
         if let view = Bundle.main.loadNibNamed("CategoryCellXibView", owner: self, options: nil)?.first as? CategoryCustomViewCell {
             categoryView = view
+            categoryView.frame = xibHolderView.frame
             xibHolderView.addSubview(categoryView)
         }
     }
