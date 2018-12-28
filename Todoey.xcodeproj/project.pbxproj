@@ -17,6 +17,9 @@
 		9A0EE12E21D65A9B00000544 /* CategoryCellXibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0EE12D21D65A9B00000544 /* CategoryCellXibView.xib */; };
 		9A0EE13021D65BCE00000544 /* CategoryCustomViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0EE12F21D65BCE00000544 /* CategoryCustomViewCell.swift */; };
 		9A0EE13221D669BA00000544 /* ItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0EE13121D669BA00000544 /* ItemsVC.swift */; };
+		9A0EE13421D66B3900000544 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0EE13321D66B3900000544 /* ItemCell.swift */; };
+		9A0EE13621D66B5400000544 /* ItemCellXibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0EE13521D66B5400000544 /* ItemCellXibView.xib */; };
+		9A0EE13821D66B8900000544 /* ItemCustomViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0EE13721D66B8900000544 /* ItemCustomViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		9A0EE12D21D65A9B00000544 /* CategoryCellXibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCellXibView.xib; sourceTree = "<group>"; };
 		9A0EE12F21D65BCE00000544 /* CategoryCustomViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCustomViewCell.swift; sourceTree = "<group>"; };
 		9A0EE13121D669BA00000544 /* ItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsVC.swift; sourceTree = "<group>"; };
+		9A0EE13321D66B3900000544 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		9A0EE13521D66B5400000544 /* ItemCellXibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCellXibView.xib; sourceTree = "<group>"; };
+		9A0EE13721D66B8900000544 /* ItemCustomViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCustomViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,7 @@
 		9A0EE11221D658A800000544 /* Todoey */ = {
 			isa = PBXGroup;
 			children = (
+				9A0EE13921D66EC200000544 /* Cells */,
 				9A0EE12C21D65A7D00000544 /* Xib Views */,
 				9A0EE12921D6592C00000544 /* Controllers */,
 				9A0EE12821D6591C00000544 /* Views */,
@@ -80,8 +87,8 @@
 		9A0EE12821D6591C00000544 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9A0EE12A21D6596500000544 /* CategoryCell.swift */,
 				9A0EE12F21D65BCE00000544 /* CategoryCustomViewCell.swift */,
+				9A0EE13721D66B8900000544 /* ItemCustomViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -99,8 +106,18 @@
 			isa = PBXGroup;
 			children = (
 				9A0EE12D21D65A9B00000544 /* CategoryCellXibView.xib */,
+				9A0EE13521D66B5400000544 /* ItemCellXibView.xib */,
 			);
 			path = "Xib Views";
+			sourceTree = "<group>";
+		};
+		9A0EE13921D66EC200000544 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9A0EE12A21D6596500000544 /* CategoryCell.swift */,
+				9A0EE13321D66B3900000544 /* ItemCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +181,7 @@
 				9A0EE12E21D65A9B00000544 /* CategoryCellXibView.xib in Resources */,
 				9A0EE12121D658A900000544 /* LaunchScreen.storyboard in Resources */,
 				9A0EE11E21D658A900000544 /* Assets.xcassets in Resources */,
+				9A0EE13621D66B5400000544 /* ItemCellXibView.xib in Resources */,
 				9A0EE11921D658A800000544 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,10 +193,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A0EE13821D66B8900000544 /* ItemCustomViewCell.swift in Sources */,
 				9A0EE13021D65BCE00000544 /* CategoryCustomViewCell.swift in Sources */,
 				9A0EE13221D669BA00000544 /* ItemsVC.swift in Sources */,
 				9A0EE11621D658A800000544 /* CategoriesVC.swift in Sources */,
 				9A0EE11421D658A800000544 /* AppDelegate.swift in Sources */,
+				9A0EE13421D66B3900000544 /* ItemCell.swift in Sources */,
 				9A0EE11C21D658A800000544 /* Todoey.xcdatamodeld in Sources */,
 				9A0EE12B21D6596500000544 /* CategoryCell.swift in Sources */,
 			);

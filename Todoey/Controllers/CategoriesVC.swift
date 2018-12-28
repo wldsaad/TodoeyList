@@ -97,12 +97,13 @@ extension CategoriesVC: UITableViewDataSource {
 //MARK: - Extension for TableView Delegate
 extension CategoriesVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let categorySelected = categories[indexPath.row]
         performSegue(withIdentifier: "showItemsSegue", sender: categorySelected)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let itemsVC = segue.destination as? ItemsVC {
-            
+            itemsVC.updatedCurrentCategory(forCategory: sender as! Category)
         }
     }
 }
