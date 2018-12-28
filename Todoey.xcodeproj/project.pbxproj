@@ -70,11 +70,11 @@
 		9A0EE11221D658A800000544 /* Todoey */ = {
 			isa = PBXGroup;
 			children = (
+				9A0EE11321D658A800000544 /* AppDelegate.swift */,
 				9A0EE13921D66EC200000544 /* Cells */,
 				9A0EE12C21D65A7D00000544 /* Xib Views */,
 				9A0EE12921D6592C00000544 /* Controllers */,
 				9A0EE12821D6591C00000544 /* Views */,
-				9A0EE11321D658A800000544 /* AppDelegate.swift */,
 				9A0EE11721D658A800000544 /* Main.storyboard */,
 				9A0EE11D21D658A900000544 /* Assets.xcassets */,
 				9A0EE11F21D658A900000544 /* LaunchScreen.storyboard */,

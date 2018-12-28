@@ -17,6 +17,7 @@ class ItemsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var hideViews: UIView!
+    private lazy var overlayView = UIView()
     private let dataContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
@@ -27,11 +28,13 @@ class ItemsVC: UIViewController {
     
     private func addDismissGesture(){
         let dismissTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tableView.addGestureRecognizer(dismissTap)
+        overlayView.addGestureRecognizer(dismissTap)
     }
     
     @objc private func dismissKeyboard(){
-        searchBar.resignFirstResponder()
+        if searchBar.isFirstResponder {
+            searchBar.resignFirstResponder()
+        }
     }
     
     
@@ -138,6 +141,15 @@ extension ItemsVC: UITableViewDelegate {
 
 //MARK: - Extension for Searchbar
 extension ItemsVC: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        overlayView.frame = view.frame
+        view.addSubview(overlayView)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        overlayView.removeFromSuperview()
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0 {
             if let selectedCategory = selectedCategory {
