@@ -35,6 +35,9 @@ class ItemsVC: UIViewController {
         }
         do {
             self.items = try dataContext.fetch(fetchRequest)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         } catch {
             debugPrint("Error loading items: \(error)")
         }
@@ -103,6 +106,34 @@ extension ItemsVC: UITableViewDelegate {
             items.remove(at: indexPath.row)
             saveData()
         }
+    }
+}
+
+//MARK: - Extension for Searchbar
+extension ItemsVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            if let selectedCategory = selectedCategory {
+                loadItems(parentCategory: selectedCategory)
+            }
+        } else {
+            let filterRequest: NSFetchRequest<Items> = Items.fetchRequest()
+            if let categoryName = selectedCategory?.name {
+                let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", categoryName)
+                let searchPredicate = NSPredicate(format: "name CONTAINS[cd] %@", searchBar.text!)
+                let compoundPredicates = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, searchPredicate])
+                filterRequest.predicate = compoundPredicates
+                do {
+                    self.items = try self.dataContext.fetch(filterRequest)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                } catch {
+                    
+                }
+            }
+        }
+        
     }
 }
 
