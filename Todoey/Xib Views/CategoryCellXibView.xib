@@ -16,8 +16,8 @@
             <rect key="frame" x="0.0" y="0.0" width="369" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Willo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOZ-zL-ZLG">
-                    <rect key="frame" x="165.5" y="39.5" width="38" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOZ-zL-ZLG">
+                    <rect key="frame" x="20" y="39.5" width="120" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -25,11 +25,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="gOZ-zL-ZLG" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="32P-qS-6un"/>
-                <constraint firstItem="gOZ-zL-ZLG" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cqZ-zB-mIT"/>
+                <constraint firstItem="gOZ-zL-ZLG" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="1zv-5A-7EZ"/>
+                <constraint firstItem="gOZ-zL-ZLG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="7Zo-Rw-fvE"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="nameLabel" destination="gOZ-zL-ZLG" id="Gmp-Ud-yWg"/>
+            </connections>
             <point key="canvasLocation" x="135.19999999999999" y="135.38230884557723"/>
         </view>
     </objects>

@@ -10,6 +10,7 @@ import UIKit
 
 class CategoryCustomViewCell: UIView {
 
+    @IBOutlet weak var nameLabel: UILabel!
     
 
 }

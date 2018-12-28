@@ -11,19 +11,19 @@ import UIKit
 class CategoryCell: UITableViewCell {
     
     @IBOutlet weak var xibHolderView: UIView!
-    
+    private var categoryView = CategoryCustomViewCell()
 
     override func awakeFromNib() {
         super.awakeFromNib()
         if let view = Bundle.main.loadNibNamed("CategoryCellXibView", owner: self, options: nil)?.first as? CategoryCustomViewCell {
-            xibHolderView.addSubview(view)
+            categoryView = view
+            xibHolderView.addSubview(categoryView)
         }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func updatecategoryName(name: String) {
+        categoryView.nameLabel.text = name
     }
+   
 
 }

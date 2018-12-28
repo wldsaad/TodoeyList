@@ -57,7 +57,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Dpq-ST-sDK">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="XC8-7V-2im"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="XC8-7V-2im">
+                            <connections>
+                                <action selector="addNewCategoryAction:" destination="BYZ-38-t0r" id="D07-oU-6jv"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="hRc-c1-PYb" id="ARn-dD-RJG"/>
