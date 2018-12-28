@@ -51,13 +51,42 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Tzr-Qx-ei0"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BwC-bm-Zo1">
+                                <rect key="frame" x="16" y="278.5" width="343" height="110"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No categories yet, add some" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYF-2H-Krf">
+                                        <rect key="frame" x="32.5" y="53.5" width="220" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="H5i-vG-ZkP">
+                                        <rect key="frame" x="262.5" y="20" width="50" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="6SS-uU-7lP"/>
+                                            <constraint firstAttribute="width" constant="50" id="vBm-Zg-jjr"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="nYF-2H-Krf" firstAttribute="centerX" secondItem="BwC-bm-Zo1" secondAttribute="centerX" constant="-29.25" id="0er-zS-DkQ"/>
+                                    <constraint firstItem="nYF-2H-Krf" firstAttribute="centerY" secondItem="BwC-bm-Zo1" secondAttribute="centerY" constant="9" id="3zQ-21-Wiy"/>
+                                    <constraint firstItem="H5i-vG-ZkP" firstAttribute="leading" secondItem="nYF-2H-Krf" secondAttribute="trailing" constant="10" id="cdW-OF-VAC"/>
+                                    <constraint firstAttribute="height" constant="110" id="fPC-c8-L0z"/>
+                                    <constraint firstItem="H5i-vG-ZkP" firstAttribute="centerY" secondItem="nYF-2H-Krf" secondAttribute="centerY" constant="-9" id="kNb-hU-UyP"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="BwC-bm-Zo1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7xr-pA-hvr"/>
                             <constraint firstItem="hRc-c1-PYb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9DF-1O-XzA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BwC-bm-Zo1" secondAttribute="trailing" constant="16" id="Vcd-Ql-QMo"/>
                             <constraint firstItem="hRc-c1-PYb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ztp-Hi-Ay5"/>
                             <constraint firstItem="hRc-c1-PYb" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="hkX-0P-AcI"/>
+                            <constraint firstItem="BwC-bm-Zo1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jfK-k0-8N4"/>
                             <constraint firstItem="hRc-c1-PYb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="pnz-ZY-5bd"/>
+                            <constraint firstItem="BwC-bm-Zo1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="tG2-m5-lM5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -69,6 +98,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="hideViews" destination="BwC-bm-Zo1" id="I64-Os-2UW"/>
                         <outlet property="tableView" destination="hRc-c1-PYb" id="ARn-dD-RJG"/>
                         <segue destination="3zh-Wv-Z0y" kind="show" identifier="showItemsSegue" id="tZB-We-NGO"/>
                     </connections>
@@ -91,7 +121,7 @@
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="7li-Tm-p4J">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     <connections>
                                         <outlet property="delegate" destination="3zh-Wv-Z0y" id="V4P-vp-aJI"/>
                                     </connections>
@@ -126,10 +156,39 @@
                                     <outlet property="delegate" destination="3zh-Wv-Z0y" id="kMs-vx-ibL"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDo-9a-RhN">
+                                <rect key="frame" x="16" y="278.5" width="343" height="110"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No todos yet, add some" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVe-4m-zAk">
+                                        <rect key="frame" x="80.5" y="44.5" width="182.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="SFn-hf-csP">
+                                        <rect key="frame" x="273" y="20" width="50" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="ul3-oU-5Td"/>
+                                            <constraint firstAttribute="height" constant="70" id="v0K-cO-exg"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="SFn-hf-csP" firstAttribute="centerY" secondItem="rVe-4m-zAk" secondAttribute="centerY" id="09c-AR-gub"/>
+                                    <constraint firstItem="SFn-hf-csP" firstAttribute="leading" secondItem="rVe-4m-zAk" secondAttribute="trailing" constant="10" id="0Ac-qB-fKJ"/>
+                                    <constraint firstItem="rVe-4m-zAk" firstAttribute="centerX" secondItem="LDo-9a-RhN" secondAttribute="centerX" id="1sN-tl-kNb"/>
+                                    <constraint firstAttribute="height" constant="110" id="3Cd-mN-p7B"/>
+                                    <constraint firstItem="rVe-4m-zAk" firstAttribute="centerY" secondItem="LDo-9a-RhN" secondAttribute="centerY" id="cB0-aq-AxN"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="LDo-9a-RhN" firstAttribute="centerX" secondItem="NQL-6U-8k1" secondAttribute="centerX" id="11a-2K-C0d"/>
+                            <constraint firstItem="LDo-9a-RhN" firstAttribute="centerY" secondItem="NQL-6U-8k1" secondAttribute="centerY" id="46o-Cz-dlT"/>
                             <constraint firstItem="z5A-Bh-rjY" firstAttribute="top" secondItem="WDU-0n-cod" secondAttribute="top" id="4X6-N4-Ymh"/>
+                            <constraint firstItem="WDU-0n-cod" firstAttribute="trailing" secondItem="LDo-9a-RhN" secondAttribute="trailing" constant="16" id="5ZI-qJ-Y07"/>
+                            <constraint firstItem="LDo-9a-RhN" firstAttribute="leading" secondItem="WDU-0n-cod" secondAttribute="leading" constant="16" id="EYw-kl-hed"/>
                             <constraint firstItem="z5A-Bh-rjY" firstAttribute="leading" secondItem="WDU-0n-cod" secondAttribute="leading" id="Tqo-ee-bNV"/>
                             <constraint firstItem="z5A-Bh-rjY" firstAttribute="bottom" secondItem="WDU-0n-cod" secondAttribute="bottom" id="hCH-4r-Iu3"/>
                             <constraint firstItem="z5A-Bh-rjY" firstAttribute="trailing" secondItem="WDU-0n-cod" secondAttribute="trailing" id="vA1-yJ-c4x"/>
@@ -144,6 +203,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="hideViews" destination="LDo-9a-RhN" id="Yft-Zn-IAl"/>
                         <outlet property="searchBar" destination="7li-Tm-p4J" id="Am2-C9-vCU"/>
                         <outlet property="tableView" destination="z5A-Bh-rjY" id="dFo-iz-Bdr"/>
                     </connections>
@@ -171,4 +231,7 @@
             <point key="canvasLocation" x="157.59999999999999" y="792.95352323838085"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow" width="512" height="512"/>
+    </resources>
 </document>

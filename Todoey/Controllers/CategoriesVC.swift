@@ -15,6 +15,8 @@ class CategoriesVC: UIViewController {
     private let dataContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var categories = [Category]()
     
+    @IBOutlet weak var hideViews: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,16 +33,26 @@ class CategoriesVC: UIViewController {
         }
         let addAction = UIAlertAction(title: "Add Category", style: .default) { (action) in
             if let name = addTextField.text {
-                let newCategory = Category(context: self.dataContext)
-                newCategory.name = name
-                self.categories.append(newCategory)
-                self.saveData()
+                if name.count > 0 {
+                    let newCategory = Category(context: self.dataContext)
+                    newCategory.name = name
+                    self.categories.append(newCategory)
+                    self.saveData()
+                }
             }
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            addAlert.dismiss(animated: true, completion: nil)
+        }
         addAlert.addAction(addAction)
+        addAlert.addAction(cancelAction)
         present(addAlert, animated: true, completion: nil)
     }
     
+    private func showOrHideViews(){
+        hideViews.isHidden = categories.count > 0 ? true : false
+        tableView.isHidden = categories.count > 0 ? false : true
+    }
 }
 
 //MARK: - Data Saving and loading into CoreData
@@ -50,6 +62,7 @@ extension CategoriesVC {
         do {
             try dataContext.save()
             tableView.reloadData()
+            showOrHideViews()
         } catch {
             debugPrint("Errod saving: \(error)")
         }
@@ -61,6 +74,7 @@ extension CategoriesVC {
         do {
             self.categories = try dataContext.fetch(fetchReqest)
             tableView.reloadData()
+            showOrHideViews()
         } catch {
             debugPrint("Error loading: \(error)")
         }

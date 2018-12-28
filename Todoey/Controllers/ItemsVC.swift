@@ -16,15 +16,28 @@ class ItemsVC: UIViewController {
     private var items = [Items]()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var hideViews: UIView!
     private let dataContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addDismissGesture()
 
     }
     
+    private func addDismissGesture(){
+        let dismissTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tableView.addGestureRecognizer(dismissTap)
+    }
+    
+    @objc private func dismissKeyboard(){
+        searchBar.resignFirstResponder()
+    }
+    
+    
     func updatedCurrentCategory(forCategory categroy: Category){
         self.selectedCategory = categroy
+        self.navigationItem.title = categroy.name
         loadItems(parentCategory: categroy)
     }
     
@@ -37,6 +50,7 @@ class ItemsVC: UIViewController {
             self.items = try dataContext.fetch(fetchRequest)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.showOrHideViews()
             }
         } catch {
             debugPrint("Error loading items: \(error)")
@@ -52,14 +66,20 @@ class ItemsVC: UIViewController {
         }
         let addAction = UIAlertAction(title: "Add Todo", style: .default) { (action) in
             if let name = addTextField.text {
-                let newItem = Items(context: self.dataContext)
-                newItem.name = name
-                newItem.checked = false
-                newItem.parentCategory = self.selectedCategory
-                self.items.append(newItem)
-                self.saveData()
+                if name.count > 0 {
+                    let newItem = Items(context: self.dataContext)
+                    newItem.name = name
+                    newItem.checked = false
+                    newItem.parentCategory = self.selectedCategory
+                    self.items.append(newItem)
+                    self.saveData()
+                }
             }
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            addAlert.dismiss(animated: true, completion: nil)
+        }
+        addAlert.addAction(cancelAction)
         addAlert.addAction(addAction)
         present(addAlert, animated: true, completion: nil)
     }
@@ -68,11 +88,18 @@ class ItemsVC: UIViewController {
         do {
             try dataContext.save()
             tableView.reloadData()
+            showOrHideViews()
         } catch {
             debugPrint("Errod saving: \(error)")
         }
         
     }
+    
+    private func showOrHideViews(){
+        hideViews.isHidden = items.count > 0 ? true : false
+        tableView.isHidden = items.count > 0 ? false : true
+    }
+    
 }
 //MARK: - Extension for TableView DataSource
 extension ItemsVC: UITableViewDataSource {
@@ -134,6 +161,11 @@ extension ItemsVC: UISearchBarDelegate {
             }
         }
         
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
 
